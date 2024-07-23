@@ -29,3 +29,4 @@ require("lazy").setup({
 })
 
 require("config.keybinds")
+require("config.colorscheme")

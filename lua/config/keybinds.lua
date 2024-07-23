@@ -1,19 +1,16 @@
 --general
-vim.keymap.set({ "n" }, "<space>", "<NOP>");
+vim.keymap.set("n", "<space>", "<NOP>"); --disabling moving by space
+vim.keymap.set("n", "<leader>a", vim.cmd.write)
 
-function liveGrepDir(dir)
-    require("telescope.builtin").live_grep {
-	cwd = dir,
-    }
-end
+--navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
-vim.keymap.set({"n"}, "<leader>fd", function()
-    
-    local input = vim.fn.input("Enter directory to search: ")
-    if input ~= "" then
-	liveGrepDir(input)    
-    end
-end)
+--code
+vim.keymap.set("n", "<leader>{", "hf)a{}<esc>ha<cr><cr><esc>ka<tab>") --square brackets
+
 
 vim.keymap.set({"n"}, "<f1>", "<cmd>!.\\Build.ps1<cr>")
 vim.keymap.set({"n"}, "<f2>", function()
@@ -24,12 +21,8 @@ end)
 vim.keymap.set({"n"}, "<f3>", function()
     liveGrepDir("$STEAM_GAMES\\RimWorld\\Data")
 end)
-vim.keymap.set("n", "<leader>c", function()
-    vim.api.nvim_set_current_dir(vim.fn.stdpath("config"))
-end)
 
-local telescope_builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
+vim.keymap.set("n", "<leader>c", function() --set path to config
+    vim.api.nvim_set_current_dir(vim.fn.stdpath("config"))
+    vim.notify("Set current directory to config.")
+end)
