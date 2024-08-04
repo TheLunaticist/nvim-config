@@ -6,19 +6,24 @@ return {
 		"nvim-telescope/telescope-file-browser.nvim",
 	},
 	config = function()
-		require("telescope").load_extension("file_browser")
 
 		require("telescope").setup({
 			extensions = {
 				file_browser = {
+					theme = "ivy",
+					hijack_netrw = true,
 					mappings = {
 						["n"] = {
-							["<C-g>"] = require("telescope").extensions.file_browser.actions.goto_parent_dir,
+							["u"] = require("telescope").extensions.file_browser.actions.toggle_hidden,
+							["h"] = require("telescope").extensions.file_browser.actions.goto_parent_dir,
+							["l"] =require("telescope").extensions.file_browser.actions.open_dir,
 						},
 					},
 				},
 			},
 		})
+
+		require("telescope").load_extension("file_browser")
 
 		--keybinds
 		function liveGrepDir(dir)
