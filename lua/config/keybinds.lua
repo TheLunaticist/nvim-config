@@ -1,6 +1,6 @@
 --general
 vim.keymap.set("n", "<space>", "<NOP>"); --disabling moving by space
-vim.keymap.set("n", "<leader>a", vim.cmd.write)
+vim.keymap.set("n", "<C-a>", vim.cmd.write)
 
 --navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -10,6 +10,9 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 --code
 vim.keymap.set("n", "<leader>{", "hf)a{}<esc>ha<cr><cr><esc>ka<tab>") --square brackets
+
+--editing
+vim.keymap.set("n", "s", "viw");
 
 
 vim.keymap.set({"n"}, "<f1>", "<cmd>!.\\Build.ps1<cr>")
