@@ -43,8 +43,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "javascript", "lua" },
+vim.api.nvim_create_autocmd("LspAttach", {
     callback = function()
         vim.opt.signcolumn = "yes"
     end,

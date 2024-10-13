@@ -12,5 +12,13 @@ return {
             command = MASON_PATH .. "/netcoredbg/netcoredbg/netcoredbg.exe",
             args = { "--interpreter=vscode" },
         }
+
+	dap.configurations.cs = {
+	    {
+		type = "clr",
+		name = "launch - netcoredbg",
+
+	    }
+	}
     end,
 }
